@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual Environment
+venv/
+.venv/
+env/
+.nerd/
+
+# Flask
+instance/
+
+# SQLite Database
+*.db
+*.sqlite3
+
+# VS Code
+.vscode/
+
+# Environment Variables
+.env
+
+# Uploads (optional)
+uploads/
+
+# Migrations cache
+migrations/__pycache__/
