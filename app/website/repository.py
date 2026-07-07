@@ -86,7 +86,7 @@ class SettingsRepository(BaseRepository):
         if setting:
             setting.value=value
         else:
-            setting = Setting(key=key, value=value, group=group):
+            setting = Setting(key=key, value=value, group=group)
             self.add(setting)
         self.commit()
         return setting

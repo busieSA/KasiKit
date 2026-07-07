@@ -15,6 +15,7 @@ instance/
 # SQLite Database
 *.db
 *.sqlite3
+kasikit.db
 
 # VS Code
 .vscode/
@@ -27,3 +28,6 @@ uploads/
 
 # Migrations cache
 migrations/__pycache__/
+
+tdl.txt
+

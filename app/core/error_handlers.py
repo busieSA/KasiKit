@@ -1,4 +1,5 @@
-from flask import jsonify
+from flask import jsonify, current_app
+from werkzeug.exceptions import HTTPException
 from app.core.errors import (
     NotFoundError,
     ConflictError,
@@ -7,6 +8,14 @@ from app.core.errors import (
 
 
 def register_error_handlers(app):
+
+    @app.errorhandler(HTTPException)
+    def handle_http_exception(error):
+        return jsonify({
+            "success" : False,
+            "message" : error.description
+        }), error.code
+    
 
     @app.errorhandler(ConflictError)
     def handle_coflict(error):
@@ -24,6 +33,10 @@ def register_error_handlers(app):
     
     @app.errorhandler(Exception)
     def handle_generic(error):
+
+        if current_app.debug:
+            raise error
+
         return jsonify({
             'success' : False,
             'message' : "Internal Error"

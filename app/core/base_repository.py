@@ -21,7 +21,7 @@ class BaseRepository:
         db.session.delete(entity)
         db.session.commit()
 
-    def commit(self, entity):
+    def commit(self, entity=None):
         db.session.commit()
 
     ## QUERY HELPERS

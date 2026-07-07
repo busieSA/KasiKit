@@ -20,7 +20,7 @@ from app.website.schemas import (
     settings_schema
 )
 
-website_bp = Blueprint("website", __name__, url_prefix='/')
+website_bp = Blueprint("website", __name__, url_prefix='/api')
 
 ###=============================== Services =================================###
 
@@ -30,14 +30,18 @@ social_service = SocialLinkService()
 settings_service = SettingsService()
 ###============================= Routes ===================================###
 
+@website_bp.get('')
+def index():
+    return "hello world..."
+
 
 @website_bp.post('/company')
 def create_company():
 
-    data = request.get_json()
-
-    clean_data = validate_company_payload(data)
-
+    clean_data = validate_company_payload(
+        request.get_json()
+    )
+    
     company = company_service.create_company(clean_data)
 
     return success(
@@ -103,7 +107,7 @@ def get_services():
 
 
 
-@website_bp.get('/services/<int: service_id>')
+@website_bp.get('/services/<int:service_id>')
 def get_service(service_id):
 
     service = service_service.get_service(service_id)

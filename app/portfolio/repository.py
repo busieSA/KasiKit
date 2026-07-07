@@ -1,13 +1,16 @@
-from app.portfolio.models import PortfolioCategory, Project, Image
 from app.core.base_repository import BaseRepository
+from app.portfolio.models import Category, Project, Image
 
 class CategoryRepository(BaseRepository):
+    
     def __init__(self):
-        super().__init__(PortfolioCategory)
+        super().__init__(Category)
     
     def get_by_slug(self, slug):
         return self.model.query.filter_by(slug=slug).first()
-    
+   
+
+
 class ProjectRepository(BaseRepository):
     def __init__(self):
         super().__init__(Project)

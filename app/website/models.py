@@ -22,11 +22,10 @@ class Service(BaseModel):
     name = db.Column(db.String(150), nullable=False)
     slug = db.Column(db.String(160), unique=True,index=True)
 
-    description = db.Column(db.text)
+    description = db.Column(db.Text)
     price = db.Column(db.Float)
 
     pricing_type = db.Column(db.String(20), default='quote')
-    pricing_type = db.Column(db.Boolean, default=True)
 
 class SocialLink(BaseModel):
     __tablename__ = 'social_links'
